@@ -48,6 +48,9 @@ namespace NuciText.Normalisation.UnitTests
             "this one should be capitalised. yes it should!",
             "This one should be capitalised. Yes it should!")]
         [TestCase(
+            "Package names such as NuciText.Normalisation or nucitext.normalisation should not have spaces after punctuation.",
+            "Package names such as NuciText.Normalisation or nucitext.normalisation should not have spaces after punctuation.")]
+        [TestCase(
             "Punctuation not added after version numbers such as 1.2.3 and others.",
             "Punctuation not added after version numbers such as 1.2.3 and others.")]
         public void GivenAValidString_WhenNormalisingSentence_ThenTheResultHasBeenNormaliseSentenced(string input, string expected)

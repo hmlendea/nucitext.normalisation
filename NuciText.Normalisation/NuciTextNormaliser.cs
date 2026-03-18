@@ -30,11 +30,11 @@ namespace NuciText.Normalisation
             // Remove spaces before punctuation
             result = Regex.Replace(result, @"\s+([.,!?;:])", "$1");
 
-            // Ensure space after punctuation
-            result = Regex.Replace(result, @"([.,!?;:])([^\s\d])", "$1 $2");
+            // Ensure space after in-sentence punctuation
+            result = Regex.Replace(result, @"([,!?;:])([^\s\d])", "$1 $2");
 
             // Capitalise first letter of each sentence
-            result = Regex.Replace(result, @"(^\s*[a-z])|([.!?]\s*[a-z])", match =>
+            result = Regex.Replace(result, @"(^\s*[a-z])|([.!?]\s+[a-z])", match =>
             {
                 return match.Value.ToUpper();
             });
