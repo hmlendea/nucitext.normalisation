@@ -31,7 +31,7 @@ namespace NuciText.Normalisation
             result = Regex.Replace(result, @"\s+([.,!?;:])", "$1");
 
             // Ensure space after punctuation
-            result = Regex.Replace(result, @"([.,!?;:])([^\s])", "$1 $2");
+            result = Regex.Replace(result, @"([.,!?;:])([^\s\d])", "$1 $2");
 
             // Capitalise first letter of each sentence
             result = Regex.Replace(result, @"(^\s*[a-z])|([.!?]\s*[a-z])", match =>
