@@ -14,12 +14,17 @@ namespace NuciText.Normalisation
         /// <returns>The normalised sentence.</returns>
         public string NormaliseSentence(string input)
         {
-            if (string.IsNullOrWhiteSpace(input))
+            if (input is null)
             {
                 return null;
             }
 
             string result = input.Trim();
+
+            if (string.IsNullOrWhiteSpace(result))
+            {
+                return null;
+            }
 
             // Remove repeated spaces
             while (result.Contains("  "))

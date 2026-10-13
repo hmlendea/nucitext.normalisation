@@ -2,12 +2,13 @@ using NUnit.Framework;
 
 namespace NuciText.Normalisation.UnitTests
 {
+    [TestFixture]
     public class NuciTextNormaliserTests
     {
-        INuciTextNormaliser normaliser;
+        private INuciTextNormaliser normaliser;
 
         [SetUp]
-        public void Setup()
+        public void SetUp()
         {
             normaliser = new NuciTextNormaliser();
         }
@@ -16,7 +17,7 @@ namespace NuciText.Normalisation.UnitTests
         [TestCase(null)]
         [TestCase("")]
         [TestCase("   ")]
-        public void GivenANullOrWhitespaceString_WhenNormalisingSentence_ThenTheResultIsEmpty(string input)
+        public void GivenANullOrWhitespaceString_WhenNormalisingSentence_ThenTheResultIsNull(string input)
             => Assert.That(normaliser.NormaliseSentence(input), Is.Null);
 
         [Test]
@@ -53,7 +54,7 @@ namespace NuciText.Normalisation.UnitTests
         [TestCase(
             "Punctuation not added after version numbers such as 1.2.3 and others.",
             "Punctuation not added after version numbers such as 1.2.3 and others.")]
-        public void GivenAValidString_WhenNormalisingSentence_ThenTheResultHasBeenNormaliseSentenced(string input, string expected)
+        public void GivenAValidString_WhenNormalisingSentence_ThenTheResultHasBeenNormalised(string input, string expected)
             => Assert.That(normaliser.NormaliseSentence(input), Is.EqualTo(expected));
     }
 }
