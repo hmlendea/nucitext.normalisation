@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NuciText.Normalisation/NuciText.Normalisation.csproj" />
+  <Project Path="NuciText.Normalisation.UnitTests/NuciText.Normalisation.UnitTests.csproj" />
+</Solution>
