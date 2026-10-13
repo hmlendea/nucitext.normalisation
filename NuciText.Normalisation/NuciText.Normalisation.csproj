@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>NuciText.Normalisation</RootNamespace>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Description>NuciText Normalisation</Description>
     <Authors>Horațiu Mlendea</Authors>
     <Copyright>Copyright 2026 © Horațiu Mlendea</Copyright>
@@ -11,6 +11,8 @@
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <PackageTags>Text Normalisation</PackageTags>
     <ImplicitUsings>disable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
 </Project>
