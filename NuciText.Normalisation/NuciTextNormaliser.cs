@@ -1,3 +1,4 @@
+using System;
 using System.Text.RegularExpressions;
 
 namespace NuciText.Normalisation
@@ -7,6 +8,11 @@ namespace NuciText.Normalisation
     /// </summary>
     public sealed class NuciTextNormaliser : INuciTextNormaliser
     {
+        private static readonly Regex PunctuationSpacingRegex = new(@"\s+([.,!?;:])", RegexOptions.Compiled);
+        private static readonly Regex InSentencePunctuationSpacingRegex = new(@"([,!?;:])([^\s\d])", RegexOptions.Compiled);
+        private static readonly Regex SentenceCapitalisationRegex = new(@"(^\s*[a-z])|([.!?]\s+[a-z])", RegexOptions.Compiled);
+        private static readonly Regex TerminalPunctuationRegex = new(@"[.!?]$", RegexOptions.Compiled);
+
         /// <summary>
         /// Normalises the input sentence by trimming whitespace, removing repeated spaces, ensuring proper spacing around punctuation, capitalising the first letter of each sentence, and appending a period if necessary.
         /// </summary>
@@ -14,43 +20,34 @@ namespace NuciText.Normalisation
         /// <returns>The normalised sentence.</returns>
         public string NormaliseSentence(string input)
         {
-            if (input is null)
+            if (string.IsNullOrWhiteSpace(input))
             {
                 return null;
             }
 
-            string result = input.Trim();
+            string result = input!.Trim();
 
-            if (string.IsNullOrWhiteSpace(result))
-            {
-                return null;
-            }
+            result = RemoveRepeatedSpaces(result);
+            result = PunctuationSpacingRegex.Replace(result, "$1");
+            result = InSentencePunctuationSpacingRegex.Replace(result, "$1 $2");
+            result = SentenceCapitalisationRegex.Replace(result, match => match.Value.ToUpper());
 
-            // Remove repeated spaces
-            while (result.Contains("  "))
-            {
-                result = result.Replace("  ", " ");
-            }
-
-            // Remove spaces before punctuation
-            result = Regex.Replace(result, @"\s+([.,!?;:])", "$1");
-
-            // Ensure space after in-sentence punctuation
-            result = Regex.Replace(result, @"([,!?;:])([^\s\d])", "$1 $2");
-
-            // Capitalise first letter of each sentence
-            result = Regex.Replace(result, @"(^\s*[a-z])|([.!?]\s+[a-z])", match =>
-            {
-                return match.Value.ToUpper();
-            });
-
-            // Append period if no ending punctuation
-            if (!Regex.IsMatch(result, @"[.!?]$"))
+            if (!TerminalPunctuationRegex.IsMatch(result))
             {
                 result += ".";
             }
 
             return result;
+        }
+
+        private static string RemoveRepeatedSpaces(string value)
+        {
+            while (value.Contains("  ", StringComparison.Ordinal))
+            {
+                value = value.Replace("  ", " ", StringComparison.Ordinal);
+            }
+
+            return value;
         }
     }
 }
