@@ -10,28 +10,43 @@ A .NET library for normalising text by trimming whitespace, collapsing repeated 
 
 ## 📑 Table of Contents
 
-- [✨ Capabilities](#-capabilities)
-- [🚀 Usage](#-usage)
-- [📦 Installation](#-installation)
-- [🛠️ Development](#-development)
-- [⚙️ GitHub Actions](#-github-actions)
-- [🗂️ Project Structure](#-project-structure)
-- [🏗️ Architecture](#-architecture)
-- [🗺️ Roadmap](#-roadmap)
-- [📚 Documentation](#-documentation)
-- [🤝 Contributing](#-contributing)
-- [🔒 Security](#-security)
-- [💝 Project Engagement](#-project-engagement)
-- [📄 License](#-license)
+- [Capabilities](#-capabilities)
+- [Usage](#-usage)
+  - [Examples](#examples)
+- [Compatibility](#-compatibility)
+- [Installation](#-installation)
+  - [Package Manager Installation](#package-manager-installation)
+- [Privacy and Data](#-privacy-and-data)
+- [Development](#-development)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+  - [Build](#build)
+  - [Test](#test)
+  - [Continuous Integration](#continuous-integration)
+  - [Dependencies](#dependencies)
+- [GitHub Actions](#-github-actions)
+- [Project Structure](#-project-structure)
+  - [Projects and Packages](#projects-and-packages)
+  - [Directories](#directories)
+- [Architecture](#-architecture)
+- [Documentation](#-documentation)
+- [API Reference](#-api-reference)
+- [FAQ](#-faq)
+- [Troubleshooting](#-troubleshooting)
+- [Contributing](#-contributing)
+- [Code of Conduct](#-code-of-conduct)
+- [Security](#-security)
+- [Project Engagement](#-project-engagement)
+- [License](#-license)
 
 ## ✨ Capabilities
 
-- Trims leading and trailing whitespace
-- Collapses repeated spaces into single spaces
-- Removes spaces before punctuation marks (.,!?;:)
-- Ensures single space after in-sentence punctuation marks (,!?;:)
-- Capitalises the first letter of each sentence
-- Appends a period if the text lacks ending punctuation
+- Trims leading and trailing whitespace.
+- Collapses repeated spaces into single spaces.
+- Removes spaces before punctuation marks (`.,!?;:`).
+- Ensures single space after in-sentence punctuation marks (`,!?;:`).
+- Capitalises the first letter of each sentence.
+- Appends a period if the text lacks ending punctuation.
 
 ## 🚀 Usage
 
@@ -42,6 +57,16 @@ INuciTextNormaliser normaliser = new NuciTextNormaliser();
 string result = normaliser.NormaliseSentence("   hello   world!   ");
 // Result: "Hello world!"
 ```
+
+### Examples
+
+`NormaliseSentence` returns `null` for null or whitespace-only input and returns a deterministic normalised sentence for valid input.
+
+## 🧩 Compatibility
+
+| Component | Supported Versions | Notes |
+|-----------|--------------------|-------|
+| .NET | 10.0 | The library targets `net10.0`. |
 
 ## 📦 Installation
 
@@ -57,6 +82,12 @@ Or, via the `Package Manager Console`:
 ```powershell
 Install-Package NuciText.Normalisation
 ```
+
+## 🛡️ Privacy and Data
+
+NuciText.Normalisation processes caller-provided strings in memory and does not log, transmit, persist, or collect data.
+
+For the detailed description of how the application handles privacy and personal data, see [PRIVACY.md](./PRIVACY.md).
 
 ## 🛠️ Development
 
@@ -88,11 +119,20 @@ dotnet test --no-build --verbosity normal
 
 The project uses GitHub Actions for continuous integration. The workflow runs on every push and pull request to the `master` branch, executing restore, build, and test steps.
 
+### Dependencies
+
+| Package | Version | Scope | Purpose |
+|---------|---------|-------|---------|
+| `NUnit` | 4.5.0 | Development | Test framework. |
+| `Moq` | 4.20.72 | Development | Mocking support for tests. |
+| `Microsoft.NET.Test.Sdk` | 18.3.0 | Development | Test host and SDK integration. |
+| `NUnit3TestAdapter` | 6.1.0 | Development | NUnit test adapter. |
+
 ## ⚙️ GitHub Actions
 
 | Workflow | Purpose | What it does |
 |----------|---------|--------------|
-| [ dotnet.yml ](https://github.com/hmlendea/nucitext.normalisation/blob/master/.github/workflows/dotnet.yml) | CI validation | Restores dependencies, builds the solution, and runs all tests on Ubuntu with .NET 10.0 |
+| [dotnet.yml](https://github.com/hmlendea/nucitext.normalisation/blob/master/.github/workflows/dotnet.yml) | CI validation | Restores dependencies, builds the solution, and runs all tests on Ubuntu with .NET 10.0. |
 
 ## 🗂️ Project Structure
 
@@ -100,15 +140,15 @@ The project uses GitHub Actions for continuous integration. The workflow runs on
 
 | Project | Type | Purpose |
 |---------|------|---------|
-| `NuciText.Normalisation/NuciText.Normalisation.csproj` | Library | Core text normalisation library |
-| `NuciText.Normalisation.UnitTests/NuciText.Normalisation.UnitTests.csproj` | Unit Tests | NUnit test suite for the normaliser |
+| `NuciText.Normalisation/NuciText.Normalisation.csproj` | Library | Core text normalisation library. |
+| `NuciText.Normalisation.UnitTests/NuciText.Normalisation.UnitTests.csproj` | Unit Tests | NUnit test suite for the normaliser. |
 
 ### Directories
 
 | Directory | Purpose |
 |-----------|---------|
-| `docs/` | Comprehensive documentation covering API reference, behaviour, components, and flows |
-| `.github/workflows/` | GitHub Actions CI/CD workflows |
+| `docs/` | Comprehensive documentation covering API reference, behaviour, components, and flows. |
+| `.github/workflows/` | GitHub Actions CI workflow. |
 
 ## 🏗️ Architecture
 
@@ -116,22 +156,28 @@ NuciText.Normalisation follows a simple interface-based design with a sealed sta
 
 See the [architecture documentation](./ARCHITECTURE.md) for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
 
-## 🗺️ Roadmap
-
-See [ROADMAP.md](./ROADMAP.md) for planned work and forthcoming changes.
-
 ## 📚 Documentation
 
 | Resource | Description |
 |----------|-------------|
-| [API Reference](./docs/api-reference/) | Complete API documentation |
-| [Behaviour](./docs/behaviour/) | Normalisation behaviour specifications |
-| [Components](./docs/components/) | Component architecture documentation |
-| [Flows](./docs/flows/) | Runtime flow documentation |
+| [API Reference](./docs/api-reference/) | Complete API documentation. |
+| [Behaviour](./docs/behaviour/) | Normalisation behaviour specifications. |
+| [Components](./docs/components/) | Component architecture documentation. |
+| [Flows](./docs/flows/) | Runtime flow documentation. |
+| [Build and Deployment](./docs/build-and-deployment.md) | Build and package guidance. |
+| [Configuration](./docs/configuration.md) | Configuration constraints and behaviour. |
 
-## 📜 Code of Conduct
+## 🌐 API Reference
 
-See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct expected in all project spaces.
+The [API reference](./docs/api-reference/) documents the public normaliser contract and implementation.
+
+## ❓ FAQ
+
+See the [Frequently Asked Questions](./docs/faq.md) for responses to frequently raised inquiries.
+
+## 🩺 Troubleshooting
+
+See [Troubleshooting Guide](./docs/troubleshooting.md) for diagnostic procedures and resolutions to recurring problems.
 
 ## 🤝 Contributing
 
@@ -144,10 +190,14 @@ When doing so, please:
 - Maintain your branch synchronised with `master`
 - Revise the documentation when functionality changes
 - Properly test all modifications, including edge cases and error conditions
-- Add tests for additional or modified functionality
+- Include tests for additional or modified functionality
 - Raise a new [issue](https://github.com/hmlendea/nucitext.normalisation/issues) for problems or suggestions
 
 See the [contributing guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
+
+## 📜 Code of Conduct
+
+See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct expected in all project spaces.
 
 ## 🔒 Security
 
@@ -166,4 +216,4 @@ If you find this project useful, consider [funding it](https://hmlendea.go.ro/fu
 ## 📄 License
 
 This project is being distributed under the `GNU General Public License v3.0 or later`.
-See [LICENSE](./LICENSE) for further information.
+See [LICENSE](./LICENSE) for additional information.
