@@ -2,16 +2,16 @@
 
 This document covers the guidelines and processes for contributing to this project, including how to report issues, suggest enhancements, submit code changes, and follow project standards.
 
-## Table of Contents
+## 📑 Table of Contents
 
 - [How to Contribute](#how-to-contribute)
 - [Code of Conduct](#code-of-conduct)
 - [Security](#security)
 - [License](#license)
 - [Recognition](#recognition)
-- [Getting Help](#getting-help)
+- [Getting Assistance](#getting-assistance)
 
-## How to Contribute
+## 🤝 How to Contribute
 
 ### Reporting Issues
 
@@ -23,7 +23,7 @@ This document covers the guidelines and processes for contributing to this proje
 ### Suggesting Enhancements
 
 - Check the roadmap and existing discussions.
-- Explain the use case and expected behavior.
+- Explain the use case and expected behaviour.
 - Consider implementation complexity.
 
 ### Code Contributions
@@ -58,8 +58,8 @@ dotnet restore
 
 - Target the `master` branch.
 - Keep PRs focused and atomic.
-- Update documentation if applicable.
-- Add tests for any new functionality.
+- Revise documentation if applicable.
+- Include tests for any new functionality.
 - Ensure the CI checks pass.
 
 ### Code Style
@@ -77,25 +77,27 @@ dotnet test --no-build --verbosity normal
 
 ### Documentation
 
-- Update relevant docs for changes.
+- Revise relevant docs for changes.
 - Follow the documentation style guide.
 - Preview changes locally if possible.
 
+## 📋 Code of Conduct
 
+This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
-## Security
+## 🔒 Security
 
 Report security vulnerabilities per the [Security Policy](SECURITY.md).
 
-## License
+## 📄 License
 
 By contributing, you agree that your contributions will be licensed under the GNU General Public License v3.0 or later.
 
-## Recognition
+## 🙏 Recognition
 
 Contributors are recognized in GitHub commit history and release notes.
 
-## Getting Help
+## ❓ Getting Assistance
 
 - Check existing discussions and documentation first.
 - Open a GitHub Discussion for questions.

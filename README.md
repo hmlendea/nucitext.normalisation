@@ -129,6 +129,10 @@ See [ROADMAP.md](./ROADMAP.md) for planned work and forthcoming changes.
 | [Components](./docs/components/) | Component architecture documentation |
 | [Flows](./docs/flows/) | Runtime flow documentation |
 
+## 📜 Code of Conduct
+
+See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct expected in all project spaces.
+
 ## 🤝 Contributing
 
 You are welcome to submit any suggestion, feedback, or modification to this project.
