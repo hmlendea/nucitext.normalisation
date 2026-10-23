@@ -3,15 +3,9 @@ using NUnit.Framework;
 namespace NuciText.Normalisation.UnitTests
 {
     [TestFixture]
-    public class NuciTextNormaliserTests
+    public sealed class NuciTextNormaliserTests
     {
-        private INuciTextNormaliser normaliser;
-
-        [SetUp]
-        public void SetUp()
-        {
-            normaliser = new NuciTextNormaliser();
-        }
+        private readonly INuciTextNormaliser normaliser = new NuciTextNormaliser();
 
         [Test]
         [TestCase(null)]
